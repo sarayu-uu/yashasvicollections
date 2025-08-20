@@ -26,8 +26,8 @@ const FeaturesSection = () => {
     },
     {
       icon: Truck,
-      title: 'Free Shipping ^ ₹999',
-      description: 'Free delivery on orders ^ ₹999'
+      title: 'Free Ship ₹999+',
+      description: 'Free shipping on ₹999+'
     },
     {
       icon: Award,
