@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import WishlistButton from './WishlistButton';
 
 const CategorySection = () => {
   const categories = [
@@ -70,6 +71,8 @@ const CategorySection = () => {
                         {category.productCount}
                       </span>
                     </div>
+                    {/* Wishlist Button - Placeholder product data */}
+                    <WishlistButton product={{ id: category.id.toString(), name: category.name, price: "0", image: category.image, category: category.name }} />
                   </div>
                   
                   {/* Content */}

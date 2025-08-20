@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar"; // Import Navbar
+import { WishlistProvider } from "../context/WishlistContext";
+import { CartProvider } from "../context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +37,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
       >
-        {children}
+        <WishlistProvider>
+          <CartProvider> {/* Wrap children with CartProvider */}
+            <Navbar /> {/* Add Navbar here */}
+            {children}
+          </CartProvider>
+        </WishlistProvider>
         <Footer />
       </body>
     </html>

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Filter, Grid, List, Star } from 'lucide-react';
+import WishlistButton from '../../components/WishlistButton';
 
 const SareesPage = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -87,7 +88,11 @@ const SareesPage = () => {
       isNew: false,
       discount: 17,
     },
-  ];
+  ].map(saree => ({
+    ...saree,
+    id: saree.id.toString(), // Ensure ID is string for consistency with context
+    category: 'Sarees' // Add category property
+  }));
 
   const filters = [
     {
@@ -224,6 +229,7 @@ const SareesPage = () => {
                         -{saree.discount}%
                       </div>
                     )}
+                    <WishlistButton product={saree} />
                   </div>
                   
                   <div className={`p-4 ${viewMode === 'list' ? 'flex-1' : ''}`}>

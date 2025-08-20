@@ -3,12 +3,16 @@
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, User, ShoppingCart, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, User, ShoppingCart, Menu, X, ChevronDown, Heart } from 'lucide-react';
+import { useWishlist } from '../context/WishlistContext';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShopMenuOpen, setIsShopMenuOpen] = useState(false);
   const shopMenuRef = useRef<HTMLDivElement>(null);
+  const { wishlist } = useWishlist();
+  const { cart } = useCart();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -97,15 +101,25 @@ const Navbar = () => {
             <button className="text-[#f8f8f8] hover:text-white transition-colors duration-200">
               <Search size={20} />
             </button>
+            <Link href="/wishlist" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
+              <Heart size={20} />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+            </Link>
             <button className="text-[#f8f8f8] hover:text-white transition-colors duration-200">
               <User size={20} />
             </button>
-            <button className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
+            <Link href="/cart" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
               <ShoppingCart size={20} />
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
-            </button>
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cart.reduce((total, item) => total + item.quantity, 0)}
+                </span>
+              )}
+            </Link>
           </div>
 
           {/* Mobile icons */}
@@ -113,15 +127,25 @@ const Navbar = () => {
             <button className="text-[#f8f8f8] hover:text-white transition-colors duration-200">
               <Search size={20} />
             </button>
+            <Link href="/wishlist" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
+              <Heart size={20} />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+            </Link>
             <button className="text-[#f8f8f8] hover:text-white transition-colors duration-200">
               <User size={20} />
             </button>
-            <button className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
+            <Link href="/cart" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
               <ShoppingCart size={20} />
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
-            </button>
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cart.reduce((total, item) => total + item.quantity, 0)}
+                </span>
+              )}
+            </Link>
           </div>
         </div>
 
@@ -152,6 +176,10 @@ const Navbar = () => {
                   <Link href="/jewellery" className="block px-3 py-2 text-sm text-[#f8f8f8] hover:bg-[#001144]/80">Jewellery</Link>
                 </div>
               )}
+              <Link href="/wishlist" className="text-[#f8f8f8] hover:text-white block px-3 py-2 transition-colors duration-200 relative group">
+                Wishlist
+                <span className="absolute bottom-0 left-3 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-[calc(100%-1.5rem)]"></span>
+              </Link>
               <a href="#" className="text-[#f8f8f8] hover:text-white block px-3 py-2 transition-colors duration-200 relative group">
                 Contact Us
                 <span className="absolute bottom-0 left-3 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-[calc(100%-1.5rem)]"></span>

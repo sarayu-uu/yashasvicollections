@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import WishlistButton from './WishlistButton';
 
 const BestsellerSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -64,7 +65,10 @@ const BestsellerSection = () => {
       image: '/images/products/womens/dresses/dress1.jpg',
       category: 'Dresses'
     }
-  ];
+  ].map(product => ({
+    ...product,
+    id: product.id.toString() // Ensure ID is string for consistency with context
+  }));
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % Math.ceil(products.length / 5));
@@ -138,6 +142,7 @@ const BestsellerSection = () => {
                   <p className="text-lg font-semibold text-[#001144]">
                     {product.price}
                   </p>
+                  <WishlistButton product={product} />
                 </div>
               </div>
             ))}
