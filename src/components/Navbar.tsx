@@ -81,12 +81,12 @@ const Navbar = () => {
 
           {/* Logo - centered */}
           <div className="flex items-center justify-center flex-1 lg:flex-none">
-            <Link href="/" className="relative w-32 h-12 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+            <Link href="/" className="relative w-40 h-16 cursor-pointer hover:opacity-80 transition-opacity duration-200">
               <Image
                 src="/images/logo/Yashashvi Logo.jpg"
                 alt="Yashaswi Collections Logo"
                 fill
-                className="object-contain"
+                className="object-cover"
                 priority
               />
             </Link>
