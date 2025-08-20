@@ -10,9 +10,14 @@ import { useCart } from '../context/CartContext';
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShopMenuOpen, setIsShopMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false); // Add mounted state
   const shopMenuRef = useRef<HTMLDivElement>(null);
   const { wishlist } = useWishlist();
   const { cart } = useCart();
+
+  useEffect(() => {
+    setMounted(true); // Set mounted to true after component mounts
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -103,7 +108,7 @@ const Navbar = () => {
             </button>
             <Link href="/wishlist" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
               <Heart size={20} />
-              {wishlist.length > 0 && (
+              {mounted && wishlist.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {wishlist.length}
                 </span>
@@ -114,7 +119,7 @@ const Navbar = () => {
             </button>
             <Link href="/cart" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
               <ShoppingCart size={20} />
-              {cart.length > 0 && (
+              {mounted && cart.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {cart.reduce((total, item) => total + item.quantity, 0)}
                 </span>
@@ -129,7 +134,7 @@ const Navbar = () => {
             </button>
             <Link href="/wishlist" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
               <Heart size={20} />
-              {wishlist.length > 0 && (
+              {mounted && wishlist.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {wishlist.length}
                 </span>
@@ -140,7 +145,7 @@ const Navbar = () => {
             </button>
             <Link href="/cart" className="text-[#f8f8f8] hover:text-white transition-colors duration-200 relative">
               <ShoppingCart size={20} />
-              {cart.length > 0 && (
+              {mounted && cart.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {cart.reduce((total, item) => total + item.quantity, 0)}
                 </span>

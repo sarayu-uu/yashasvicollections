@@ -7,12 +7,13 @@ import Link from "next/link";
 import { Trash2, ShoppingCart, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../../context/CartContext"; // Import useCart
+import { Product } from "../../context/WishlistContext"; // Import Product interface
 
 const WishlistPage = () => {
   const { wishlist, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart(); // Use addToCart from CartContext
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     addToCart(product);
     removeFromWishlist(product.id); // Remove from wishlist after adding to cart
   };

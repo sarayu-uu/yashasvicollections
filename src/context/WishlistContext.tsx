@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 
-interface Product {
+export interface Product { // Export the Product interface
   id: string;
   name: string;
   price: number;

@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Heart } from 'lucide-react';
-import { useWishlist } from '../context/WishlistContext';
 
 const CollectionList = () => {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
