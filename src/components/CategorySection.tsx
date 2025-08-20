@@ -112,7 +112,7 @@ const CategorySection = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-6">
-            Can't find what you're looking for? Explore our complete collection
+            Can&apos;t find what you&apos;re looking for? Explore our complete collection
           </p>
           <a 
             href="/sarees" 

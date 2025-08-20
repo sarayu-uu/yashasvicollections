@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -38,9 +38,9 @@ const HeroCarousel = () => {
     }
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  }, [slides.length]);
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -54,7 +54,7 @@ const HeroCarousel = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <section className="relative h-screen overflow-hidden">

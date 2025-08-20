@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Yashasvi Collections - Celebrate Tradition with Elegance",
+  title: "Yashaswi Collections - Celebrate Tradition with Elegance",
   description: "Discover timeless sarees, handcrafted jewellery, and organic essentials designed to bring heritage and simplicity into your everyday life.",
 };
 

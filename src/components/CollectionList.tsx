@@ -3,7 +3,6 @@
 import { useState } from 'react';
 
 const CollectionList = () => {
-  const [activeCategory, setActiveCategory] = useState('Sarees');
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   const categories = ['Sarees', 'Dresses', 'Jewellery'];
@@ -191,7 +190,7 @@ const CollectionList = () => {
                 href={`/${category.toLowerCase()}`}
                 className={`whitespace-nowrap px-4 py-2 transition-all duration-200 font-medium text-sm lg:text-base
                   relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#001144] after:transition-all after:duration-300
-                  ${activeCategory === category || hoveredCategory === category
+                  ${hoveredCategory === category
                      ? 'text-[#001144]' // Active or hovered state: text color only
                      : 'text-gray-700 hover:text-[#001144] group-hover:after:w-full' // Default hover state
                   }

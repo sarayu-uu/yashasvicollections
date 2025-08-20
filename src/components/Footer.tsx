@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, Youtube, Pin, X, MessageCircle, Video } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Pin, X, MessageCircle } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
             <li><a href="#" className="hover:underline">Privacy Policy</a></li>
             <li><a href="#" className="hover:underline">Privacy Policy For APP</a></li>
             <li><a href="#" className="hover:underline">Payment Policy</a></li>
-            <li><a href="#" className="hover:underline">FAQ's</a></li>
+            <li><a href="#" className="hover:underline">FAQ&apos;s</a></li>
             <li><a href="#" className="hover:underline">Customization Charges</a></li>
             <li><a href="#" className="hover:underline">Sustainability</a></li>
             <li><a href="#" className="hover:underline">Grievances</a></li>

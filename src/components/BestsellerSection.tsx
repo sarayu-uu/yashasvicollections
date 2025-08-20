@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -66,9 +66,9 @@ const BestsellerSection = () => {
     }
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % Math.ceil(products.length / 5));
-  };
+  }, [products.length]);
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + Math.ceil(products.length / 5)) % Math.ceil(products.length / 5));
@@ -78,7 +78,7 @@ const BestsellerSection = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   const getVisibleProducts = () => {
     const startIndex = currentSlide * 5;

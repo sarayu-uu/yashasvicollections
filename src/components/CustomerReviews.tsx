@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { ChevronUp, ChevronRight } from 'lucide-react';
 
@@ -42,9 +42,9 @@ const CustomerReviews = () => {
     }
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % Math.ceil(reviews.length / 2));
-  };
+  }, [reviews.length]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -57,7 +57,7 @@ const CustomerReviews = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   const getVisibleReviews = () => {
     const startIndex = currentSlide * 2;
@@ -97,7 +97,7 @@ const CustomerReviews = () => {
                   <div className="lg:w-2/3 p-6 flex flex-col justify-between">
                     <div>
                       <p className="text-gray-700 leading-relaxed mb-4 font-light">
-                        "{review.testimonial}"
+                        &quot;{review.testimonial}&quot;
                       </p>
                     </div>
                     
